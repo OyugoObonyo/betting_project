@@ -4,10 +4,8 @@ defmodule BettingProject.Accounts.Account do
 
   alias BettingProject.Repo
   alias BettingProject.Users.User
-  alias BettingProject.Plans.Plan
 
   schema "accounts" do
-    belongs_to(:plan, Plan, foreign_key: :plan_id)
     belongs_to(:user, User, foreign_key: :user_id)
     timestamps()
   end
@@ -15,7 +13,6 @@ defmodule BettingProject.Accounts.Account do
   def changeset(struct, params) do
     struct
     |> cast(params, [
-      :plan_id,
       :user_id
     ])
   end
