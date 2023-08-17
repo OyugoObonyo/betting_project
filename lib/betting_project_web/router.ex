@@ -16,7 +16,7 @@ defmodule BettingProjectWeb.Router do
   end
 
   pipeline :auth do
-    plug BettingProjectWeb.Auth.Pipeline
+    plug BettingProjectWeb.Auth.Guardian.Pipeline
     plug BettingProjectWeb.Auth.Plugs.SetUser
   end
 
@@ -27,7 +27,7 @@ defmodule BettingProjectWeb.Router do
     post "/users/login", UserController, :login
   end
 
-  scope "/api", EmailsProjectWeb do
+  scope "/api", BettingProjectWeb do
     pipe_through [:api, :auth]
 
     post "/users/:id/roles", UserRoleController, :assign_user_role

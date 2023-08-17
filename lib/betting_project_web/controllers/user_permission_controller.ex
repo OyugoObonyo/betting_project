@@ -3,7 +3,7 @@ defmodule BettingProjectWeb.UserPermissionController do
   alias BettingProjectWeb.UsersPermissions.UserPermission
   alias BettingProjectWeb.ErrorResponse
 
-  action_fallback(EmailsProjectWeb.FallbackController)
+  action_fallback(BettingProjectWeb.FallbackController)
 
   def add_user_permission(conn, %{"id" => user_id, "permission_id" => permission_id}) do
     with {:ok, _new_user_permission} <-

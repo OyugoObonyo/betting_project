@@ -4,7 +4,7 @@ defmodule BettingProjectWeb.UserController do
   alias BettingProjectWeb.ErrorResponse
   alias BettingProject.Users.User
 
-  action_fallback(EmailsProjectWeb.FallbackController)
+  action_fallback(BettingProjectWeb.FallbackController)
 
   def create(conn, params) do
     with {:ok, user} <- User.create(params) do
