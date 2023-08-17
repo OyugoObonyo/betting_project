@@ -1,11 +1,55 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     BettingProject.Repo.insert!(%BettingProject.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+defmodule Seeds do
+  alias EmailsProject.Repo
+
+  alias EmailsProject.Roles.Role
+  alias EmailsProject.Permissions.Permission
+  alias EmailsProject.RolesPermissions.RolePermission
+  alias EmailsProject.Plans.Plan
+
+  def run(__env) do
+    [
+      %{name: "admin"}
+    ]
+    |> Enum.each(fn role ->
+      Repo.insert(%Role{name: role.name},
+        on_conflict: [set: [name: role.name]],
+        conflict_target: [:name]
+      )
+    end)
+
+    [
+      %{name: "superuser"},
+      %{name: "canAssignPermission"},
+      %{name: "canRevokePermission"},
+      %{name: "canAssignRole"},
+      %{name: "canRevokeRole"}
+    ]
+    |> Enum.each(fn permission ->
+      Repo.insert(%Permission{name: permission.name},
+        on_conflict: [set: [name: permission.name]],
+        conflict_target: [:name]
+      )
+    end)
+
+    [
+      %{role_id: 1, permission_id: 2},
+      %{role_id: 1, permission_id: 3},
+      %{role_id: 1, permission_id: 4},
+      %{role_id: 1, permission_id: 5}
+    ]
+    |> Enum.each(fn role_permission ->
+      Repo.insert(
+        %RolePermission{
+          role_id: role_permission.role_id,
+          permission_id: role_permission.permission_id
+        },
+        on_conflict: [
+          set: [role_id: role_permission.role_id, permission_id: role_permission.permission_id]
+        ],
+        conflict_target: [:role_id, :permission_id]
+      )
+    end)
+  end
+end
+
+Seeds.run(Mix.env())

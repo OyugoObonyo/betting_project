@@ -1,7 +1,7 @@
 defmodule BettingProjectWeb.Auth.Plugs.SetUser do
   import Plug.Conn
-  alias BettingProjectWeb.Auth.ErrorResponse
-  alias BettingProjectWeb.Users.User
+  alias BettingProjectWeb.ErrorResponse
+  alias BettingProject.Users.User
 
   def init(opts), do: opts
 

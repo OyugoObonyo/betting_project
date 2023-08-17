@@ -2,7 +2,7 @@ defmodule BettingProjectWeb.UserRoleController do
   use BettingProjectWeb, :controller
   alias BettingProject.UsersRoles.UserRole
   alias BettingProjectWeb.Auth.CheckPermission
-  alias BettingProjectWeb.Auth.ErrorResponse
+  alias BettingProjectWeb.ErrorResponse
 
   action_fallback(BettingProjectWeb.FallbackController)
 
