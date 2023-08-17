@@ -1,10 +1,9 @@
 defmodule Seeds do
-  alias EmailsProject.Repo
+  alias BettingProject.Repo
 
-  alias EmailsProject.Roles.Role
-  alias EmailsProject.Permissions.Permission
-  alias EmailsProject.RolesPermissions.RolePermission
-  alias EmailsProject.Plans.Plan
+  alias BettingProject.Roles.Role
+  alias BettingProject.Permissions.Permission
+  alias BettingProject.RolesPermissions.RolePermission
 
   def run(__env) do
     [
