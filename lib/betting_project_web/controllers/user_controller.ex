@@ -1,7 +1,8 @@
 defmodule BettingProjectWeb.UserController do
   use BettingProjectWeb, :controller
-  alias BettingWeb.Auth.Guardian
-  alias EmailsProjectWeb.Auth.ErrorResponse
+  alias BettingProjectWeb.Auth.Guardian
+  alias BettingProjectWeb.ErrorResponse
+  alias BettingProject.Users.User
 
   action_fallback(EmailsProjectWeb.FallbackController)
 
