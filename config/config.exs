@@ -20,6 +20,11 @@ config :betting_project, BettingProjectWeb.Endpoint,
   pubsub_server: BettingProject.PubSub,
   live_view: [signing_salt: "aArkgawj"]
 
+# Configure Guardian package
+config :betting_project, BettingProjectWeb.Auth.Guardian,
+  issuer: "betting_project",
+  secret_key: "UZ7VbawhuUxAd6IdvvefGIsiIJ9lOXsJOIaRsDWlikh8Epb6pt0HkNVWDsW9hAhZpr2X"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
