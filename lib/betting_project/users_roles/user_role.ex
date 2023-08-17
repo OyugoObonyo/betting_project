@@ -26,6 +26,7 @@ defmodule BettingProject.UsersRoles.UserRole do
     |> foreign_key_constraint(:role_id)
   end
 
+  @spec create(:invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}) :: any
   def create(params) do
     %__MODULE__{}
     |> changeset(params)

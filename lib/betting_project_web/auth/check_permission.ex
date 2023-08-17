@@ -1,6 +1,7 @@
 defmodule BettingProjectWeb.Auth.CheckPermission do
   def can_user_do?(user, required_permission) do
     user_permissions = _flatten_permissions(user)
+    IO.puts("CHECK USER PERMISSIONS: #{user_permissions}")
     Enum.member?(user_permissions, required_permission)
   end
 
