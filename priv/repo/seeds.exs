@@ -4,7 +4,7 @@ defmodule Seeds do
   alias BettingProject.Roles.Role
   alias BettingProject.Permissions.Permission
   alias BettingProject.RolesPermissions.RolePermission
-  alias BettingProject.Games.Game
+  alias BettingProject.Sports.Sport
 
   def run(__env) do
     [
@@ -53,9 +53,9 @@ defmodule Seeds do
     [
       %{name: "football"}
     ]
-    |> Enum.each(fn game ->
-      Repo.insert(%Game{name: game.name},
-        on_conflict: [set: [name: game.name]],
+    |> Enum.each(fn sport ->
+      Repo.insert(%Sport{name: sport.name},
+        on_conflict: [set: [name: sport.name]],
         conflict_target: [:name]
       )
     end)
