@@ -23,7 +23,8 @@ defmodule Seeds do
       %{name: "canRevokePermission"},
       %{name: "canAssignRole"},
       %{name: "canRevokeRole"},
-      %{name: "canAddGame"}
+      %{name: "canAddGame"},
+      %{name: "canViewGameProfitLoss"}
     ]
     |> Enum.each(fn permission ->
       Repo.insert(%Permission{name: permission.name},
@@ -37,7 +38,8 @@ defmodule Seeds do
       %{role_id: 1, permission_id: 3},
       %{role_id: 1, permission_id: 4},
       %{role_id: 1, permission_id: 5},
-      %{role_id: 1, permission_id: 6}
+      %{role_id: 1, permission_id: 6},
+      %{role_id: 1, permission_id: 7}
     ]
     |> Enum.each(fn role_permission ->
       Repo.insert(

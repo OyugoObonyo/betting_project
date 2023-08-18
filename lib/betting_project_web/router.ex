@@ -36,5 +36,6 @@ defmodule BettingProjectWeb.Router do
     delete "/users/:id/permissions", UserPermissionController, :delete_user_permission
     post "/games", GameController, :create
     post "/games/:game_id/bets", BetController, :create
+    get "/games/:game_id/bets/profit-loss", BetController, :view_profit_loss
   end
 end

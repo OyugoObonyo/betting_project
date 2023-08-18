@@ -7,4 +7,16 @@ defmodule BettingProjectWeb.BetJSON do
       game_id: bet.game_id
     }
   end
+
+  def profit_loss(%{amount: amount}) do
+    if amount > 0 do
+      %{
+        total_profit: amount
+      }
+    else
+      %{
+        total_loss: abs(amount)
+      }
+    end
+  end
 end
