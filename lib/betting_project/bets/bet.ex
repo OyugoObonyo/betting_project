@@ -27,6 +27,8 @@ defmodule BettingProject.Bets.Bet do
   end
 
   def create(params) do
+    IO.inspect(params, label: "INCOMING CREATE BET PARAMS!")
+
     %__MODULE__{}
     |> changeset(params)
     |> Repo.insert()

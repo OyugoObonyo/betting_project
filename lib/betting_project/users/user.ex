@@ -6,6 +6,7 @@ defmodule BettingProject.Users.User do
   alias BettingProject.Repo
   alias BettingProject.Accounts.Account
   alias BettingProject.UsersRoles.UserRole
+  alias BettingProject.Bets.Bet
 
   schema "users" do
     field :first_name, :string
@@ -16,6 +17,7 @@ defmodule BettingProject.Users.User do
     field :msisdn, :string
     field :is_deleted, :boolean, default: false
     has_many(:users_roles, UserRole, on_delete: :delete_all)
+    has_many(:bets, Bet)
     has_one(:account, Account, on_delete: :delete_all)
     timestamps()
   end
