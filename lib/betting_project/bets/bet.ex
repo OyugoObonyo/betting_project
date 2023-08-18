@@ -30,17 +30,3 @@ defmodule BettingProject.Bets.Bet do
     |> Repo.insert()
   end
 end
-
-defmodule BettingProject.Repo.Migrations.CreateBetsTable do
-  use Ecto.Migration
-
-  def change do
-    create table(:bets) do
-      add :home, :string, nullable: false
-      add :away, :string, nullable: false
-      add :status, :string, default: "P", nullable: false
-      add :user_id, references(:users)
-      add :game_id, references(:games)
-    end
-  end
-end
