@@ -34,5 +34,7 @@ defmodule BettingProjectWeb.Router do
     delete "/users/:id/roles", UserRoleController, :revoke_user_role
     post "/users/:id/permissions", UserPermissionController, :add_user_permission
     delete "/users/:id/permissions", UserPermissionController, :delete_user_permission
+    post "/games", GameController, :create
+    post "/games/:game_id/bets", BetController, :create
   end
 end
