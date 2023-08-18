@@ -20,8 +20,10 @@ defmodule BettingProject.Bets.Bet do
       :amount,
       :status
     ])
-    |> validate_required([:amount, :status])
+    |> validate_required([:amount, :user_id, :game_id])
     |> validate_inclusion(:status, ["P", "W", "D"])
+    |> foreign_key_constraint(:user_id)
+    |> foreign_key_constraint(:game_id)
   end
 
   def create(params) do
