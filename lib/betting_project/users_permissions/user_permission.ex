@@ -1,4 +1,4 @@
-defmodule BettingProjectWeb.UsersPermissions.UserPermission do
+defmodule BettingProject.UsersPermissions.UserPermission do
   import Ecto.Query
   import Ecto.Changeset
   use Ecto.Schema
