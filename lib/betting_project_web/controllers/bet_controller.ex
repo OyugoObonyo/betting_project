@@ -25,8 +25,7 @@ defmodule BettingProjectWeb.BetController do
   def view_profit_loss(conn, %{"game_id" => game_id}) do
     user = conn.assigns[:user]
     required_permission = "canViewGameProfitLoss"
-    user_access_status = CheckPermission.can_user_do?(user, required_permission)
-    if user_access_status != true, do: raise(ErrorResponse.Forbidden)
+    CheckPermission.set_up(required_permission, user)
 
     with _game = %Game{} <- Game.find_by_id(game_id) do
       amount = Bet.find_game_profit_loss(game_id)

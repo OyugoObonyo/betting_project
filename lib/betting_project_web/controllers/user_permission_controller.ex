@@ -9,8 +9,7 @@ defmodule BettingProjectWeb.UserPermissionController do
   def add_user_permission(conn, %{"id" => user_id, "permission_id" => permission_id}) do
     user = conn.assigns[:user]
     required_permission = "canAssignPermission"
-    user_access_status = CheckPermission.can_user_do?(user, required_permission)
-    if user_access_status != true, do: raise(ErrorResponse.Forbidden)
+    CheckPermission.set_up(required_permission, user)
 
     with {:ok, _new_user_permission} <-
            UserPermission.create(%{"user_id" => user_id, "permission_id" => permission_id}) do
@@ -23,8 +22,7 @@ defmodule BettingProjectWeb.UserPermissionController do
   def delete_user_permission(conn, %{"id" => user_id, "permission_id" => permission_id}) do
     user = conn.assigns[:user]
     required_permission = "canRevokePermission"
-    user_access_status = CheckPermission.can_user_do?(user, required_permission)
-    if user_access_status != true, do: raise(ErrorResponse.Forbidden)
+    CheckPermission.set_up(required_permission, user)
 
     with user_permission = %UserPermission{} <-
            UserPermission.find_user_permission(user_id, permission_id),

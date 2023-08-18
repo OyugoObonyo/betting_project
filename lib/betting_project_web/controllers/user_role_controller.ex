@@ -9,8 +9,7 @@ defmodule BettingProjectWeb.UserRoleController do
   def assign_user_role(conn, %{"id" => user_id, "role_id" => role_id}) do
     user = conn.assigns[:user]
     required_permission = "canAssignRole"
-    user_access_status = CheckPermission.can_user_do?(user, required_permission)
-    if user_access_status != true, do: raise(ErrorResponse.Forbidden)
+    CheckPermission.set_up(required_permission, user)
 
     case UserRole.find_by_user_id(user_id) do
       %UserRole{} ->
@@ -34,8 +33,7 @@ defmodule BettingProjectWeb.UserRoleController do
   def revoke_user_role(conn, %{"id" => user_id}) do
     user = conn.assigns[:user]
     required_permission = "canRevokeRole"
-    user_access_status = CheckPermission.can_user_do?(user, required_permission)
-    if user_access_status != true, do: raise(ErrorResponse.Forbidden)
+    CheckPermission.set_up(required_permission, user)
 
     with _user_role = %UserRole{} <- UserRole.find_by_user_id(user_id),
          {_, _} <-
