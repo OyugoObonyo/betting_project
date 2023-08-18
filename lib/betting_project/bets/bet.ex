@@ -39,6 +39,5 @@ defmodule BettingProject.Bets.Bet do
     wins_query = from(g in __MODULE__, where: g.game_id == ^game_id and g.status == "W")
     loss_query = from(g in __MODULE__, where: g.game_id == ^game_id and g.status == "L")
     Repo.aggregate(loss_query, :sum, :amount) - Repo.aggregate(wins_query, :sum, :amount)
-    |>
   end
 end
