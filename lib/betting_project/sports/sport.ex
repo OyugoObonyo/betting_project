@@ -4,6 +4,7 @@ defmodule BettingProject.Sports.Sport do
 
   schema "sports" do
     field :name, :string
+    timestamps()
   end
 
   def changeset(struct, params) do
