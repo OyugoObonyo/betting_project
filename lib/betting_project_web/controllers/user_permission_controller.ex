@@ -1,6 +1,6 @@
 defmodule BettingProjectWeb.UserPermissionController do
   use BettingProjectWeb, :controller
-  alias BettingProjectWeb.UsersPermissions.UserPermission
+  alias BettingProject.UsersPermissions.UserPermission
   alias BettingProjectWeb.ErrorResponse
   alias BettingProjectWeb.Auth.CheckPermission
 
