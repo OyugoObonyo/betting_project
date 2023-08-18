@@ -1,4 +1,5 @@
 defmodule BettingProject.Games.Game do
+  import Ecto.Query
   import Ecto.Changeset
   use Ecto.Schema
 
@@ -28,5 +29,11 @@ defmodule BettingProject.Games.Game do
     %__MODULE__{}
     |> changeset(params)
     |> Repo.insert()
+  end
+
+  def find_by_id(id) do
+    __MODULE__
+    |> where([g], g.id == ^id)
+    |> Repo.one()
   end
 end
